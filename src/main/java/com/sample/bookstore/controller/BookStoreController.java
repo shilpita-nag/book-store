@@ -5,8 +5,6 @@ import com.sample.bookstore.db.repo.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,4 +35,15 @@ public class BookStoreController {
     public Books create(@RequestBody Books book) {
         return bookRepository.save(book);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Books updateBook(@RequestBody Books book, @PathVariable Long id) throws Exception {
+        return bookRepository.save(book);
+    }
+
 }
