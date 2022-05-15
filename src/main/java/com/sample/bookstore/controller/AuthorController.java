@@ -39,8 +39,8 @@ public class AuthorController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity createAuthor(@RequestBody Author author) {
-        Optional<Author> authorOptional = authorRepository.findById(author.getAuthorId());
-        if(authorOptional.isEmpty()) {
+        List<Author> authorOptional = authorRepository.findByAuthorName(author.getAuthorName());
+        if(!authorOptional.isEmpty()) {
             return ResponseEntity.unprocessableEntity().build();
         }
         Author saveAuthor = authorRepository.save(author);

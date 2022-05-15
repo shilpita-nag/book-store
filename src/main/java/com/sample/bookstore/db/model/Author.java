@@ -52,9 +52,4 @@ public class Author {
     public void setAuthor_name(String author_name) {
         this.authorName = author_name;
     }
-
-    /*public void addBook(Books books) {
-        this.books.add(books);
-        books.setAuthor(this);
-    }*/
 }

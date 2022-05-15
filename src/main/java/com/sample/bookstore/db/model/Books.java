@@ -3,6 +3,8 @@ package com.sample.bookstore.db.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -20,6 +22,19 @@ public class Books {
 
     @Column(name="publisher",nullable = false)
     private String publisher;
+
+    public Set<String> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Set<String> genre) {
+        this.genre = genre;
+    }
+
+    @ElementCollection
+    @CollectionTable(name = "genre", joinColumns = @JoinColumn(name = "book_id"))
+    @Column(name = "genre")
+    private Set<String> genre = new HashSet<>();
 
     public Books() {
     }

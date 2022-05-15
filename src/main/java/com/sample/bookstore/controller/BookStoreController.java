@@ -79,5 +79,4 @@ public class BookStoreController {
         bookRepository.save(book);
         return ResponseEntity.noContent().build();
     }
-
 }
