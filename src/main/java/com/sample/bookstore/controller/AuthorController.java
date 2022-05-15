@@ -1,5 +1,6 @@
 package com.sample.bookstore.controller;
 
+import com.sample.bookstore.Exception.AuthorNotFoundException;
 import com.sample.bookstore.db.model.Author;
 import com.sample.bookstore.db.model.Books;
 import com.sample.bookstore.db.repo.AuthorRepository;
@@ -29,9 +30,9 @@ public class AuthorController {
     @GetMapping("/{name}")
     public List<Books> findAllBooksByAuthor(@PathVariable  String name) {
         List<Author> authorList = authorRepository.findByAuthorName(name);
-        /*if(authorList.isEmpty()) {
-            throw new AuthorNotFoundException("name: "+name);
-        }*/
+        if(authorList.isEmpty()) {
+            throw new AuthorNotFoundException("Author not found with name: " + name) ;
+        }
         return authorList.get(0).getBooks();
     }
 
@@ -52,7 +53,7 @@ public class AuthorController {
     public ResponseEntity updateAuthor(@RequestBody Author author, @PathVariable Long id) {
         Optional<Author> authorOptional = authorRepository.findById(id);
         if(authorOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            throw new AuthorNotFoundException("Author not found with id: " + id) ;
         }
         author.setAuthorId(id);
         authorRepository.save(author);
