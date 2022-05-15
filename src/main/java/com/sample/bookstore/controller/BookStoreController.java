@@ -45,7 +45,7 @@ public class BookStoreController {
         if(booksOptional.isEmpty()) {
             throw new BookNotFoundException("No Book found with id : " + id);
         }
-        return bookRepository.findById(id);
+        return booksOptional;
     }
 
     @PostMapping
