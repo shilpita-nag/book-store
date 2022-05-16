@@ -37,12 +37,8 @@ Also add the following configuration to <b>application.properties</b>
 ```properties
 spring.jpa.defer-datasource-initialization=true
 ```
-
-###Define data model (db.model.Books.java)
-
-###Define repository (db.repo.BookRepository)
-
-
+### Postman Collection:
+[Book Store](https://www.getpostman.com/collections/00becb579e4066cf833f)
 
 ## References:
 [https://www.baeldung.com/spring-boot-start](https://www.baeldung.com/spring-boot-start)
