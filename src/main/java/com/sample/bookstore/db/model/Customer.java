@@ -1,6 +1,8 @@
 package com.sample.bookstore.db.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -40,6 +42,20 @@ public class Customer {
 
     @Column(name = "contactInfo")
     private ContactInfo contactInfo;
+
+    public List<BookStoreOrder> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<BookStoreOrder> orderList) {
+        this.orderList = orderList;
+        for(BookStoreOrder o : orderList) {
+            o.setCustomer(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    List<BookStoreOrder> orderList = new ArrayList<>();
 
     public Customer(Long customerId, String customerName, ContactInfo contactInfo) {
         this.customerId = customerId;

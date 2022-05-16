@@ -30,12 +30,12 @@ public class ContactInfo {
         this.emailAddress = emailAddress;
     }
 
-    @Column(name = "address")//, nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "phoneNumber")//, nullable = false)
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "emailAddres")//, nullable = false)
+    @Column(name = "emailAddres", nullable = false)
     private String emailAddress;
 }
