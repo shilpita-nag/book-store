@@ -14,14 +14,17 @@ public class Books {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long book_id;
 
-    @Column(name="title", nullable = false, unique = true)
+    @Column(name="title", nullable = false)
     private String title;
 
     @Column(name="isbn",nullable = false)
     private String isbn;
 
-    @Column(name="publisher",nullable = false)
+    @Column(name="publisher")
     private String publisher;
+
+    @Column(name = "inventory",nullable = false)
+    private int inventory;
 
     public Set<String> getGenre() {
         return genre;
@@ -39,10 +42,11 @@ public class Books {
     public Books() {
     }
 
-    public Books(String title, String isbn, String publisher) {
+    public Books(String title, String isbn, String publisher, int inventory) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
+        this.inventory = inventory;
     }
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -88,6 +92,14 @@ public class Books {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
     }
 
 }

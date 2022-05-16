@@ -33,4 +33,10 @@ public class BookStoreExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(e,e.getLocalizedMessage(),
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
+
+    @ExceptionHandler({OrderItemException.class})
+    protected ResponseEntity<Object> handleOrderItemNotFound(Exception e, WebRequest request) {
+        return handleExceptionInternal(e,e.getLocalizedMessage(),
+                new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
 }
