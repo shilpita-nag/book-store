@@ -5,17 +5,17 @@ This application used H2 in-memory database with JPA and Hibernate
 ### Adding H2 Dependencies
 ```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+	<scope>runtime</scope>
 </dependency>
 ```
 
 ### Adding JPA Dependency
 ```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 ```
 Above dependencies can as well be added while generation of spring boot project from Spring Initializer.
